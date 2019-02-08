@@ -32,6 +32,7 @@ public class NewsViewModel extends ViewModel {
             if(NetworkHelper.getNetworkStatus()){
                 loadNews();
             } else {
+                System.out.println("get news from db oh yeah !");
                 getNewsFromDb();
             }
         }
@@ -67,6 +68,7 @@ public class NewsViewModel extends ViewModel {
 
     //Insérer les données dans la BDD
     private void saveNews(final List<News> news){
+        System.out.println("News insérées");
         Task.callInBackground(new Callable<Void>() {
             @Override
             public Void call() {
@@ -101,11 +103,12 @@ public class NewsViewModel extends ViewModel {
         Task.callInBackground(new Callable<List<News>>() {
             @Override
             public List<News> call() {
-                return DatabaseHelper.getDatabase().newsDao().getAll();
+                List<News> news = DatabaseHelper.getDatabase().newsDao().getAll();
+                return news;
             }
         }).continueWith(new Continuation<List<News>, Void>() {
             @Override
-            public Void then(Task<List<News>> task) throws Exception {
+            public Void then(Task<List<News>> task) {
                 newsLiveData.setValue(task.getResult());
                 return null;
             }
