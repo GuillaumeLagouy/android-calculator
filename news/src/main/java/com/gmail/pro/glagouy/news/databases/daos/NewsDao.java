@@ -7,6 +7,7 @@ import java.util.List;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -24,7 +25,7 @@ public interface NewsDao {
     @Query("SELECT * FROM news WHERE news_title LIKE :title")
     News findByTitle(String title);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(List<News> news);
 
     @Delete

@@ -16,7 +16,9 @@ public class DatabaseHelper {
             @Override
             public Void call() {
                 database = Room.databaseBuilder(context,
-                        NewsDatabase.class, "news-db").build();
+                        NewsDatabase.class, "news-db")
+                        .fallbackToDestructiveMigration()
+                        .build();
                 return null;
             }
         }).continueWith(new Continuation<Void, Void>() {
