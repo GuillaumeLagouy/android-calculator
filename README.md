@@ -1,5 +1,5 @@
 # Projet Android
-Projet Gobelins
+Projet Gobelins.
 Contient deux applications principales :
 * Une calculatrice
 * Une application d'actualité
