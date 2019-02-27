@@ -59,15 +59,23 @@ public void search(View view){
 }
 ```
 
-- **Consulter les news hors-connexion**
+---
+
+- **📴 Consulter les news hors-connexion**
 
 L'architecture de l'application est basé sur celui préconisé par [Android](https://developer.android.com/topic/libraries/architecture/index.html) :
 
 ![Architecture Android](https://codelabs.developers.google.com/codelabs/android-room-with-a-view/img/3840395bfb3980b8.png)
 
-Pour pouvoir consulter les news hors-connexion elles sont insérées dans une base de donnée [SQLite](https://sqlite.org/index.html) quand il y a de la connexion.
+Pour pouvoir consulter les news hors-connexion elles sont insérées dans une base de donnée [SQLite](https://sqlite.org/index.html) quand il y a de la connexion. Elles sont récupérer dans la base donnée en l'absence de connexion.
+
+- **⭐ Mettre en favoris une news**
+
+> 🛠️En cours
 
 ## <a name="organisation">2. Organisation</a>
+
+Je me suis occupé de cette application pendant que [Hash7](https://github.com/Hashs7) développait la calculette.
 
 ## <a name="installation">3. Installation</a>
 
