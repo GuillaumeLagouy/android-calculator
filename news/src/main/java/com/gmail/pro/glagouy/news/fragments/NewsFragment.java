@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import com.gmail.pro.glagouy.news.R;
 import com.gmail.pro.glagouy.news.adapters.NewsAdapter;
-import com.gmail.pro.glagouy.news.databases.NewsDatabase;
 import com.gmail.pro.glagouy.news.listeners.NewsListener;
 import com.gmail.pro.glagouy.news.models.News;
 import com.gmail.pro.glagouy.news.viewmodels.NewsViewModel;
@@ -28,28 +28,27 @@ import androidx.recyclerview.widget.RecyclerView;
  *
  */
 public class NewsFragment extends Fragment implements NewsListener {
-    private List<News> newsList;
-    View rootView;
-    RecyclerView recyclerView;
-    NewsAdapter adapter;
+    private NewsAdapter adapter;
     private NewsViewModel model;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         model = ViewModelProviders.of(getActivity()).get(NewsViewModel.class);
-
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.recycler, container, false);
+        View rootView = inflater.inflate(R.layout.recycler, container, false);
+
+        search(rootView);
         setNews(rootView);
+
         return rootView;
     }
 
-    /** TODO
+    /**
      * il est préférable d'observer la liste des articles avec getViewLifecycleOwner() au lieu de this
      * pourquoi?
      * en this faire référence au fragment qui ne se détruit pas tout de suite et par conséquent
@@ -65,7 +64,7 @@ public class NewsFragment extends Fragment implements NewsListener {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        model.getNews().observe(this, new Observer<List<News>>() {
+        model.getNews().observe(getViewLifecycleOwner(), new Observer<List<News>>() {
             @Override
             public void onChanged(List<News> news) {
                 adapter.setNews(news);
@@ -75,7 +74,7 @@ public class NewsFragment extends Fragment implements NewsListener {
     }
 
     void setNews(View view){
-        recyclerView = view.findViewById(R.id.list_news);
+        RecyclerView recyclerView = view.findViewById(R.id.list_news);
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         llm.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(llm);
@@ -98,5 +97,21 @@ public class NewsFragment extends Fragment implements NewsListener {
     @Override
     public void onLike(News news) {
         this.model.updateOneNews(news);
+    }
+
+    public void search(View view){
+        SearchView searchView = view.findViewById(R.id.search);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                model.loadNews(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
     }
 }

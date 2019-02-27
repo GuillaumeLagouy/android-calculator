@@ -1,12 +1,14 @@
 package com.gmail.pro.glagouy.news.viewmodels;
 
 import com.gmail.pro.glagouy.news.databases.DatabaseHelper;
+import com.gmail.pro.glagouy.news.databases.NewsDatabase;
 import com.gmail.pro.glagouy.news.networks.NetworkHelper;
 import com.gmail.pro.glagouy.news.models.News;
 import com.gmail.pro.glagouy.news.models.NewsList;
 import com.gmail.pro.glagouy.news.networks.NewsService;
 import com.gmail.pro.glagouy.news.utils.Constants;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -20,10 +22,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
-/** TODO
- * Commenter
+/**
+ *  Gère les données relatifs à l'interface utilisateur
  */
 public class NewsViewModel extends ViewModel {
     private MutableLiveData<List<News>> newsLiveData;
@@ -33,9 +34,8 @@ public class NewsViewModel extends ViewModel {
         if(newsLiveData == null) {
             newsLiveData = new MutableLiveData<>();
             if(NetworkHelper.getNetworkStatus()){
-                loadNews();
+                loadNews("test");
             } else {
-                System.out.println("get news from db oh yeah !");
                 getNewsFromDb();
             }
         }
@@ -46,15 +46,12 @@ public class NewsViewModel extends ViewModel {
      * @eamosse - Tu pourrais initialiser Retrofit dans NetworkHelper en variable statique
      * ainsi tu pourrais utiliser la meme instance pour faire tous tes appels
      */
-    private void loadNews(){
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.getUrl())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+    public void loadNews(String query){
+        Retrofit retrofit = NetworkHelper.startRetrofit();
 
         NewsService service = retrofit.create(NewsService.class);
 
-        final Call<NewsList> news = service.listNews("is", Constants.getApiKey());
+        final Call<NewsList> news = service.listNews(query, Constants.getApiKey());
         news.enqueue(new Callback<NewsList>() {
             @Override
             public void onResponse(@NonNull Call<NewsList> call, @NonNull Response<NewsList> response) {
@@ -75,7 +72,6 @@ public class NewsViewModel extends ViewModel {
 
     //Insérer les données dans la BDD
     private void saveNews(final List<News> news){
-        System.out.println("News insérées");
         Task.callInBackground(new Callable<Void>() {
             @Override
             public Void call() {

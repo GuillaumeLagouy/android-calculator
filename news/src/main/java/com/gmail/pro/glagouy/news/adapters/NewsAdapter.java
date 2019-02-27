@@ -26,13 +26,13 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
     private List<News> news;
     private NewsListener listener;
 
-    public void setNews(List<News> news) {
-        this.news = news;
-    }
-
     public NewsAdapter(List<News> news, NewsListener listener) {
         this.news = news;
         this.listener = listener;
+    }
+
+    public void setNews(List<News> news) {
+        this.news = news;
     }
 
     @NonNull
@@ -50,7 +50,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
 
     @Override
     public int getItemCount() {
-        return news.size();
+        //System.out.println(news);
+        return this.news.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{
@@ -62,7 +63,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
         private ImageView mLike;
         private View v;
 
-        public MyViewHolder(@NonNull View v) {
+        MyViewHolder(@NonNull View v) {
             super(v);
             this.v = v;
             mTitle = v.findViewById(R.id.tv_title);
@@ -96,12 +97,15 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
             mLike.setOnClickListener(new View.OnClickListener() {
 
                 /** TODO
-                 * @eamosse tu devrais fexecuter cette opération dans le listener
+                 * @eamosse tu devrais executer cette opération dans le listener
                  * et notifier l'adapter pour changer l'apparence du bouton
                  */
                 @Override
                 public void onClick(View v) {
                     news.setLike(true);
+                    // ne marche pas
+                    mLike.setBackgroundResource(R.drawable.ic_thumb_up_blue_24dp);
+                    System.out.println(mLike);
                     listener.onLike(news);
                 }
             });

@@ -53,14 +53,14 @@ public class NewsDetailFragment extends Fragment {
         return rootView;
     }
 
-    /** TODO
+    /**
      * @eamosse - voir mon commentaire sur les observers
      * @param savedInstanceState
      */
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        model.getSelected().observe(this, new Observer<News>() {
+        model.getSelected().observe(getViewLifecycleOwner(), new Observer<News>() {
             @Override
             public void onChanged(News news) {
                 Picasso.get().load(news.getUrlToImage()).into(imageView);
