@@ -87,12 +87,12 @@ Je me suis occupé de cette application pendant que [Hash7](https://github.com/H
 
 - Feed de news
 
-![news feed](https://res.cloudinary.com/dcqc12ai5/image/upload/v1551292327/news_feed.gif)
+![news feed](https://res.cloudinary.com/dcqc12ai5/image/upload/c_scale,h_563,q_67/v1551292327/news_feed.gif)
 
 - Recherche
 
-![recherche](https://res.cloudinary.com/dcqc12ai5/image/upload/v1551292390/search.gif)
+![recherche](https://res.cloudinary.com/dcqc12ai5/image/upload/c_scale,h_563,q_67/v1551292390/search.gif)
 
 - Hors-connexion
 
-![hors-connexion](https://res.cloudinary.com/dcqc12ai5/image/upload/c_scale,w_540/v1551292509/no_connexion.gif)
+![hors-connexion](https://res.cloudinary.com/dcqc12ai5/image/upload/c_scale,h_563,q_67/v1551292509/no_connexion.gif)
