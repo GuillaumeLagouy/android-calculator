@@ -1,17 +1,14 @@
-# android-calculator
-Gobelins Project - Android applications - Calculator and newsfeed
+# Projet Android
+Projet Gobelins
+Contient deux applications principales :
+⋅⋅* Une calculatrice
+⋅⋅* Une application d'actualité
 
+## Installation
 
-## Installing
+Comment installer le projet :
 
-Installing project :
-
-    git clone git@github.com:Hashs7/android-calculator.git
+    git clone git@github.com:GuillaumeLagouy/android-calculator.git
     
     cd android-calculator
 
-## Project infos
-
-These apps were build with [Guillaume Lagouy](https://github.com/GuillaumeLagouy/)
-
-## Video demo
