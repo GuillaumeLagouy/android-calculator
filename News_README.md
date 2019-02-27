@@ -84,3 +84,15 @@ Je me suis occupé de cette application pendant que [Hash7](https://github.com/H
 > Cf le [README](https://github.com/GuillaumeLagouy/android-calculator/blob/master/README.md) du projet
 
 ## <a name="demo">4. Demo</a>
+
+- Feed de news
+
+![news feed](https://res.cloudinary.com/dcqc12ai5/image/upload/v1551292327/news_feed.gif)
+
+- Recherche
+
+![recherche](https://res.cloudinary.com/dcqc12ai5/image/upload/v1551292390/search.gif)
+
+- Hors-connexion
+
+![hors-connexion](https://res.cloudinary.com/dcqc12ai5/image/upload/c_scale,w_540/v1551292509/no_connexion.gif)
