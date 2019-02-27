@@ -13,4 +13,4 @@ Comment installer le projet :
     
     cd android-calculator
 
-
+En collaboration avec [Hash7](https://github.com/Hashs7)
