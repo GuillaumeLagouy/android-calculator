@@ -81,4 +81,6 @@ Je me suis occupé de cette application pendant que [Hash7](https://github.com/H
 
 ## <a name="installation">3. Installation</a>
 
+> Cf le [README](https://github.com/GuillaumeLagouy/android-calculator/blob/master/README.md) du projet
+
 ## <a name="demo">4. Demo</a>
