@@ -91,7 +91,7 @@ Je me suis occupé de cette application pendant que [Hash7](https://github.com/H
 
 - Recherche
 
-![recherche](https://res.cloudinary.com/dcqc12ai5/image/upload/c_scale,h_563,q_67/v1551292390/search.gif)
+<img src="https://res.cloudinary.com/dcqc12ai5/image/upload/v1551293856/search.gif" alt="drawing" width="317"/>
 
 - Hors-connexion
 
