@@ -9,7 +9,7 @@
 ## <a name="conception">1. Conception</a>
 
 ### Fonctionnalités :
-- **🔁 News en continues grâce à [NewsAPI](https://newsapi.org/)**
+#### **🔁 News en continues grâce à [NewsAPI](https://newsapi.org/)**
 
 Cet API fournit un flux continu de news depuis 30,000 sources de news et blog.
 > 👎 Cette API ne fournit qu'une petite partie de la news pour l'avoir en entière il faut suivre le lien.
@@ -38,7 +38,7 @@ Requête HTTP grâce à [Retrofit](https://square.github.io/retrofit/)
 
 ---
 
-- **🔎 Rechercher des news par mot-clé**
+#### **🔎 Rechercher des news par mot-clé**
 
 Recherche grâce à une [SearchView](https://developer.android.com/reference/android/widget/SearchView) dans le Layout. Puis dans le fragment
 ```java
@@ -61,7 +61,7 @@ public void search(View view){
 
 ---
 
-- **📴 Consulter les news hors-connexion**
+#### **📴 Consulter les news hors-connexion**
 
 L'architecture de l'application est basé sur celui préconisé par [Android](https://developer.android.com/topic/libraries/architecture/index.html) :
 
@@ -69,7 +69,9 @@ L'architecture de l'application est basé sur celui préconisé par [Android](ht
 
 Pour pouvoir consulter les news hors-connexion elles sont insérées dans une base de donnée [SQLite](https://sqlite.org/index.html) quand il y a de la connexion. Elles sont récupérer dans la base donnée en l'absence de connexion.
 
-- **⭐ Mettre en favoris une news**
+---
+
+#### **⭐ Mettre en favoris une news**
 
 > 🛠️En cours
 
